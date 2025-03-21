@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Trends - Sales Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+      <div class="sidebar-header border-bottom">
+        <div class="d-flex align-items-center gap-2 px-4 py-2">
+          <i class="bi bi-bar-chart-fill fs-4 text-primary"></i>
+          <h1 class="fs-4 fw-bold mb-0">Sales Dashboard</h1>
+        </div>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="sidebar-group">
+          <div class="sidebar-group-label px-4 py-2 text-muted small fw-medium">Navigation</div>
+          <div class="sidebar-group-content">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link py-2 px-4">
+                  <i class="bi bi-house-door me-2"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="regional.html" class="nav-link py-2 px-4">
+                  <i class="bi bi-bar-chart me-2"></i>
+                  <span>Regional Performance</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="products.html" class="nav-link py-2 px-4">
+                  <i class="bi bi-box-seam me-2"></i>
+                  <span>Product Performance</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="trends.html" class="nav-link active py-2 px-4">
+                  <i class="bi bi-graph-up me-2"></i>
+                  <span>Sales Trends</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="my-3">
+
+        <div class="sidebar-group">
+          <div class="sidebar-group-label px-4 py-2 text-muted small fw-medium">External Resources</div>
+          <div class="sidebar-group-content">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="https://support.microsoft.com/excel" class="nav-link py-2 px-4" target="_blank">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>
+                  <span>Excel Documentation</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://datavizcatalogue.com" class="nav-link py-2 px-4" target="_blank">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>
+                  <span>Data Visualization Guide</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.kaggle.com/datasets" class="nav-link py-2 px-4" target="_blank">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>
+                  <span>Sample Data Sources</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer border-top p-3">
+        <p class="text-muted small mb-0">Sales Dashboard v1.0</p>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content" class="content">
+      <button type="button" id="sidebarCollapse" class="btn btn-sm btn-primary position-fixed top-0 start-0 m-3 d-md-none">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <div class="container-fluid p-4 p-md-5">
+        <div class="mb-4">
+          <h1 class="h3 fw-bold">Sales Trends</h1>
+          <p class="text-muted">
+            Analysis of sales performance over time across different timeframes and channels.
+          </p>
+        </div>
+
+        <!-- Timeframe Tabs -->
+        <ul class="nav nav-pills mb-4" id="timeframeTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="monthly-tab" data-bs-toggle="tab" data-bs-target="#monthly" type="button" role="tab" aria-controls="monthly" aria-selected="true">Monthly</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="quarterly-tab" data-bs-toggle="tab" data-bs-target="#quarterly" type="button" role="tab" aria-controls="quarterly" aria-selected="false">Quarterly</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="yearly-tab" data-bs-toggle="tab" data-bs-target="#yearly" type="button" role="tab" aria-controls="yearly" aria-selected="false">Yearly</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="timeframeTabsContent">
+          <div class="tab-pane fade show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Monthly Sales vs Target</h5>
+                    <p class="card-text small text-muted">Performance against monthly targets for the current year</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/monthly-sales-vs-target-chart.png" alt="Monthly Sales vs Target Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Monthly Sales by Channel</h5>
+                    <p class="card-text small text-muted">Comparison of online vs retail store sales</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/monthly-sales-by-channel-chart.png" alt="Monthly Sales by Channel Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Monthly Performance Highlights</h5>
+                    <p class="card-text small text-muted">Key insights from monthly data</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Best Performing Month</h6>
+                      <p class="small text-muted">
+                        December with $52,000 in sales, exceeding target by 8.3%
+                      </p>
+                    </div>
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Worst Performing Month</h6>
+                      <p class="small text-muted">
+                        January with $24,000 in sales, though still above target by 9.1%
+                      </p>
+                    </div>
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Largest Growth</h6>
+                      <p class="small text-muted">
+                        May to June with 20% month-over-month growth
+                      </p>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold">Channel Insights</h6>
+                      <p class="small text-muted">
+                        Online sales consistently outperform retail by an average of 65% across all months
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Monthly Performance Table</h5>
+                    <p class="card-text small text-muted">Detailed monthly performance data</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Month</th>
+                            <th scope="col" class="text-end">Sales</th>
+                            <th scope="col" class="text-end">Target</th>
+                            <th scope="col" class="text-end">Variance</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Jan</td>
+                            <td class="text-end">$24,000</td>
+                            <td class="text-end">$22,000</td>
+                            <td class="text-end text-success">+9.1%</td>
+                          </tr>
+                          <tr>
+                            <td>Feb</td>
+                            <td class="text-end">$26,000</td>
+                            <td class="text-end">$24,000</td>
+                            <td class="text-end text-success">+8.3%</td>
+                          </tr>
+                          <tr>
+                            <td>Mar</td>
+                            <td class="text-end">$32,000</td>
+                            <td class="text-end">$28,000</td>
+                            <td class="text-end text-success">+14.3%</td>
+                          </tr>
+                          <tr>
+                            <td>Apr</td>
+                            <td class="text-end">$28,000</td>
+                            <td class="text-end">$30,000</td>
+                            <td class="text-end text-danger">-6.7%</td>
+                          </tr>
+                          <tr>
+                            <td>May</td>
+                            <td class="text-end">$35,000</td>
+                            <td class="text-end">$32,000</td>
+                            <td class="text-end text-success">+9.4%</td>
+                          </tr>
+                          <tr>
+                            <td>Jun</td>
+                            <td class="text-end">$42,000</td>
+                            <td class="text-end">$36,000</td>
+                            <td class="text-end text-success">+16.7%</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="quarterly" role="tabpanel" aria-labelledby="quarterly-tab">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Quarterly Sales vs Target</h5>
+                    <p class="card-text small text-muted">Performance against quarterly targets for the current year</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/quarterly-sales-vs-target-chart.png" alt="Quarterly Sales vs Target Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Quarterly Growth Rate</h5>
+                    <p class="card-text small text-muted">Year-over-year growth percentage by quarter</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/quarterly-growth-rate-chart.png" alt="Quarterly Growth Rate Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Quarterly Performance Analysis</h5>
+                    <p class="card-text small text-muted">Detailed breakdown of quarterly performance</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="row g-4 mb-4">
+                      <div class="col-md-6">
+                        <h6 class="fw-bold">Q1 Analysis</h6>
+                        <p class="small text-muted mb-2">
+                          Strong start to the year with sales exceeding target by 10.8%. Key drivers were new product launches and post-holiday promotions.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <span class="small fw-medium">Performance:</span>
+                          <span class="text-success">Above Target</span>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <h6 class="fw-bold">Q2 Analysis</h6>
+                        <p class="small text-muted mb-2">
+                          Continued strong performance with 12.2% growth. Summer product lines performed exceptionally well, particularly in June.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <span class="small fw-medium">Performance:</span>
+                          <span class="text-success">Above Target</span>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <h6 class="fw-bold">Q3 Analysis</h6>
+                        <p class="small text-muted mb-2">
+                          Slight underperformance against target by 5%, but still showing positive growth of 5.3% year-over-year. Back-to-school promotions didn't perform as expected.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <span class="small fw-medium">Performance:</span>
+                          <span class="text-danger">Below Target</span>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <h6 class="fw-bold">Q4 Analysis</h6>
+                        <p class="small text-muted mb-2">
+                          Strongest quarter of the year with 15.8% growth and exceeding target by 5.1%. Holiday season sales were exceptional, particularly in the online channel.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <span class="small fw-medium">Performance:</span>
+                          <span class="text-success">Above Target</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Quarter</th>
+                            <th scope="col" class="text-end">Sales</th>
+                            <th scope="col" class="text-end">Target</th>
+                            <th scope="col" class="text-end">Growth</th>
+                            <th scope="col" class="text-end">Variance</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Q1</td>
+                            <td class="text-end">$82,000</td>
+                            <td class="text-end">$74,000</td>
+                            <td class="text-end">8.5%</td>
+                            <td class="text-end text-success">+10.8%</td>
+                          </tr>
+                          <tr>
+                            <td>Q2</td>
+                            <td class="text-end">$105,000</td>
+                            <td class="text-end">$98,000</td>
+                            <td class="text-end">12.2%</td>
+                            <td class="text-end text-success">+7.1%</td>
+                          </tr>
+                          <tr>
+                            <td>Q3</td>
+                            <td class="text-end">$114,000</td>
+                            <td class="text-end">$120,000</td>
+                            <td class="text-end">5.3%</td>
+                            <td class="text-end text-danger">-5.0%</td>
+                          </tr>
+                          <tr>
+                            <td>Q4</td>
+                            <td class="text-end">$145,000</td>
+                            <td class="text-end">$138,000</td>
+                            <td class="text-end">15.8%</td>
+                            <td class="text-end text-success">+5.1%</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Annual Sales Trend</h5>
+                    <p class="card-text small text-muted">Sales performance over the last 6 years</p>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="annualSalesTrendsChart" height="400"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Annual Growth Rate</h5>
+                    <p class="card-text small text-muted">Year-over-year growth percentage</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/annual-growth-rate-chart.png" alt="Annual Growth Rate Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Long-term Trend Analysis</h5>
+                    <p class="card-text small text-muted">Key insights from annual data</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Compound Annual Growth Rate (CAGR)</h6>
+                      <p class="small text-muted">
+                        6.9% CAGR over the past 5 years, indicating steady and sustainable growth.
+                      </p>
+                    </div>
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Growth Slowdown</h6>
+                      <p class="small text-muted">
+                        2023 showed flat growth compared to 2022, potentially indicating market saturation or economic factors.
+                      </p>
+                    </div>
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Best Growth Year</h6>
+                      <p class="small text-muted">
+                        2019 with 11.3% growth, coinciding with expansion into new markets and product lines.
+                      </p>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold">Future Projection</h6>
+                      <p class="small text-muted">
+                        Based on historical trends, projected growth of 5-7% for 2024, with potential upside from new product launches.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Annual Performance Table</h5>
+                    <p class="card-text small text-muted">Detailed annual performance data</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Year</th>
+                            <th scope="col" class="text-end">Sales</th>
+                            <th scope="col" class="text-end">Growth</th>
+                            <th scope="col">Key Events</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>2018</td>
+                            <td class="text-end">$320,000</td>
+                            <td class="text-end">-</td>
+                            <td>Market entry in Europe</td>
+                          </tr>
+                          <tr>
+                            <td>2019</td>
+                            <td class="text-end">$356,000</td>
+                            <td class="text-end">+11.3%</td>
+                            <td>New product line launch</td>
+                          </tr>
+                          <tr>
+                            <td>2020</td>
+                            <td class="text-end">$382,000</td>
+                            <td class="text-end">+7.3%</td>
+                            <td>Pandemic impact, shift to online</td>
+                          </tr>
+                          <tr>
+                            <td>2021</td>
+                            <td class="text-end">$410,000</td>
+                            <td class="text-end">+7.3%</td>
+                            <td>Supply chain optimization</td>
+                          </tr>
+                          <tr>
+                            <td>2022</td>
+                            <td class="text-end">$446,000</td>
+                            <td class="text-end">+8.8%</td>
+                            <td>Expansion to Asia markets</td>
+                          </tr>
+                          <tr>
+                            <td>2023</td>
+                            <td class="text-end">$446,000</td>
+                            <td class="text-end">0.0%</td>
+                            <td>Economic slowdown, cost cutting</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sales Forecast -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Sales Forecast</h5>
+            <p class="card-text small text-muted">Projected sales for the next 6 months based on historical trends</p>
+          </div>
+          <div class="card-body">
+            <div class="chart-container" style="height: 400px;">
+              <img src="images/sales-forecast-chart.png" alt="Sales Forecast Chart" class="img-fluid chart-img">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <div class="card h-100">
+              <div class="card-header">
+                <h5 class="card-title">Quarterly Comparison</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="quarterlyComparisonChart" height="300"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-header">
+                <h5 class="card-title">Month-over-Month Growth</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="momGrowthChart" height="300"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
+

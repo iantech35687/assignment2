@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Performance - Sales Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+      <div class="sidebar-header border-bottom">
+        <div class="d-flex align-items-center gap-2 px-4 py-2">
+          <i class="bi bi-bar-chart-fill fs-4 text-primary"></i>
+          <h1 class="fs-4 fw-bold mb-0">Sales Dashboard</h1>
+        </div>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="sidebar-group">
+          <div class="sidebar-group-label px-4 py-2 text-muted small fw-medium">Navigation</div>
+          <div class="sidebar-group-content">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link py-2 px-4">
+                  <i class="bi bi-house-door me-2"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="regional.html" class="nav-link py-2 px-4">
+                  <i class="bi bi-bar-chart me-2"></i>
+                  <span>Regional Performance</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="products.html" class="nav-link active py-2 px-4">
+                  <i class="bi bi-box-seam me-2"></i>
+                  <span>Product Performance</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="trends.html" class="nav-link py-2 px-4">
+                  <i class="bi bi-graph-up me-2"></i>
+                  <span>Sales Trends</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="my-3">
+
+        <div class="sidebar-group">
+          <div class="sidebar-group-label px-4 py-2 text-muted small fw-medium">External Resources</div>
+          <div class="sidebar-group-content">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="https://support.microsoft.com/excel" class="nav-link py-2 px-4" target="_blank">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>
+                  <span>Excel Documentation</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://datavizcatalogue.com" class="nav-link py-2 px-4" target="_blank">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>
+                  <span>Data Visualization Guide</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.kaggle.com/datasets" class="nav-link py-2 px-4" target="_blank">
+                  <i class="bi bi-box-arrow-up-right me-2"></i>
+                  <span>Sample Data Sources</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer border-top p-3">
+        <p class="text-muted small mb-0">Sales Dashboard v1.0</p>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content" class="content">
+      <button type="button" id="sidebarCollapse" class="btn btn-sm btn-primary position-fixed top-0 start-0 m-3 d-md-none">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <div class="container-fluid p-4 p-md-5">
+        <div class="mb-4">
+          <h1 class="h3 fw-bold">Product Performance</h1>
+          <p class="text-muted">
+            Analysis of top and bottom performing products and product categories.
+          </p>
+        </div>
+
+        <!-- Product Tabs -->
+        <ul class="nav nav-pills mb-4" id="productTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="top-tab" data-bs-toggle="tab" data-bs-target="#top" type="button" role="tab" aria-controls="top" aria-selected="true">Top Products</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="bottom-tab" data-bs-toggle="tab" data-bs-target="#bottom" type="button" role="tab" aria-controls="bottom" aria-selected="false">Bottom Products</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="categories-tab" data-bs-toggle="tab" data-bs-target="#categories" type="button" role="tab" aria-controls="categories" aria-selected="false">Categories</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="productTabsContent">
+          <div class="tab-pane fade show active" id="top" role="tabpanel" aria-labelledby="top-tab">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Top 5 Products by Sales</h5>
+                    <p class="card-text small text-muted">Highest performing products by total sales</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/top-products-chart.png" alt="Top Products by Sales Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Top Products Growth Rate</h5>
+                    <p class="card-text small text-muted">Year-over-year growth percentage</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/top-products-growth-chart.png" alt="Top Products Growth Rate Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Top Products Monthly Performance</h5>
+                    <p class="card-text small text-muted">Sales trends over the last 6 months</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/top-products-monthly-chart.png" alt="Top Products Monthly Performance Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="bottom" role="tabpanel" aria-labelledby="bottom-tab">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Bottom 5 Products by Sales</h5>
+                    <p class="card-text small text-muted">Lowest performing products by total sales</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/bottom-products-chart.png" alt="Bottom Products by Sales Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Bottom Products Growth Rate</h5>
+                    <p class="card-text small text-muted">Year-over-year growth percentage (negative)</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/bottom-products-growth-chart.png" alt="Bottom Products Growth Rate Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Improvement Recommendations</h5>
+                    <p class="card-text small text-muted">Strategies to improve underperforming products</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <h6 class="fw-bold">Product V</h6>
+                        <p class="small text-muted">
+                          Consider rebranding or repositioning in the market. Current marketing strategy is ineffective.
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <h6 class="fw-bold">Product W</h6>
+                        <p class="small text-muted">
+                          Price point may be too high compared to competitors. Consider price adjustment or adding value features.
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <h6 class="fw-bold">Product X</h6>
+                        <p class="small text-muted">
+                          Quality issues reported by customers. Review manufacturing process and implement quality control measures.
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <h6 class="fw-bold">Product Y</h6>
+                        <p class="small text-muted">
+                          Limited market awareness. Increase marketing efforts and consider promotional campaigns.
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <h6 class="fw-bold">Product Z</h6>
+                        <p class="small text-muted">
+                          Product becoming obsolete. Consider product refresh or phasing out in favor of newer alternatives.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="categories-tab">
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Product Categories by Sales</h5>
+                    <p class="card-text small text-muted">Performance comparison across product categories</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/categories-sales-chart.png" alt="Product Categories by Sales Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Category Growth Rates</h5>
+                    <p class="card-text small text-muted">Year-over-year growth percentage by category</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="height: 400px;">
+                      <img src="images/categories-growth-chart.png" alt="Category Growth Rates Chart" class="img-fluid chart-img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">Category Details</h5>
+                    <p class="card-text small text-muted">Detailed breakdown of product categories</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Category</th>
+                            <th scope="col">Top Product</th>
+                            <th scope="col" class="text-end">Sales</th>
+                            <th scope="col" class="text-end">Growth</th>
+                            <th scope="col">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Electronics</td>
+                            <td>Product A</td>
+                            <td class="text-end">$45,000</td>
+                            <td class="text-end">+12%</td>
+                            <td><span class="badge bg-success">Growing</span></td>
+                          </tr>
+                          <tr>
+                            <td>Furniture</td>
+                            <td>Product F</td>
+                            <td class="text-end">$32,000</td>
+                            <td class="text-end">+8%</td>
+                            <td><span class="badge bg-success">Growing</span></td>
+                          </tr>
+                          <tr>
+                            <td>Clothing</td>
+                            <td>Product K</td>
+                            <td class="text-end">$28,000</td>
+                            <td class="text-end">+5%</td>
+                            <td><span class="badge bg-warning text-dark">Stable</span></td>
+                          </tr>
+                          <tr>
+                            <td>Appliances</td>
+                            <td>Product P</td>
+                            <td class="text-end">$22,000</td>
+                            <td class="text-end">+7%</td>
+                            <td><span class="badge bg-success">Growing</span></td>
+                          </tr>
+                          <tr>
+                            <td>Accessories</td>
+                            <td>Product S</td>
+                            <td class="text-end">$18,000</td>
+                            <td class="text-end">+10%</td>
+                            <td><span class="badge bg-success">Growing</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Feedback Form -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Product Feedback Form</h5>
+            <p class="card-text small text-muted">Submit feedback or suggestions for product improvements</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="product" class="form-label">Product</label>
+                <select class="form-select" id="product" required>
+                  <option value="" selected disabled>Select a product</option>
+                  <option value="product_a">Product A</option>
+                  <option value="product_b">Product B</option>
+                  <option value="product_c">Product C</option>
+                  <option value="product_d">Product D</option>
+                  <option value="product_e">Product E</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Feedback Type</label>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="feedback-type" id="improvement" value="improvement">
+                      <label class="form-check-label" for="improvement">
+                        Improvement Suggestion
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="feedback-type" id="issue" value="issue">
+                      <label class="form-check-label" for="issue">
+                        Issue Report
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="feedback" class="form-label">Feedback</label>
+                <textarea class="form-control" id="feedback" rows="4" placeholder="Please provide your feedback or suggestions" required></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="priority" class="form-label">Priority</label>
+                <select class="form-select" id="priority">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit Feedback</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
+
